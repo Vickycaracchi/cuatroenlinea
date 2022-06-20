@@ -1,64 +1,70 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Cuatro en línea
 
-## About Laravel
+Guía para abrir el juego cuatro en línea con el framework laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 1- Prerrequisitos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Para comenzar se requiere de la instalación de las siguientes aplicaciones
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Docker desktop [https://docs.docker.com/desktop/](https://docs.docker.com/desktop/)
+- DDEV [https://ddev.readthedocs.io/en/stable/](https://ddev.readthedocs.io/en/stable/)
+- Composer [https://getcomposer.org/download/](https://getcomposer.org/download/)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 2-Creación del proyecto
+Para comenzar debemos dentro del directorio donde queremos tenerlo almacenado clonar el repositorio de github con el siguiente comando
+<pre tabindex="0" class="has-inner-focus"><code> > git clone https://github.com/Vickycaracchi/cuatroenlinea
+</code></pre>
 
-## Laravel Sponsors
+Luego debemos escribir en la consola para configurar el contenedor en Docker  <code>ddev config</code>
+Esto nos pedirá ingresar una nombre para el proyecto (a elección del usuario), la ruta del documento raíz del proyecto, allí es aconsejable dejar el campo vacío y el tipo de projecto, este debe ser si o sí **laravel**.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Luego ya podemos ingresar <code> ddev start</code> aunque todavía no debería funcionar si cargamos la url que obtenemos en el navegador.
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+## 3-Verificación con composer
+Debemos asegurarnos de tener **composer** actualizado, para esto seguimos los siguientes pasos:
+ 
+<pre tabindex="0" class="has-inner-focus"><code>> ddev ssh
+> composer update
+</code></pre>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## 4-Archivo de ambiente (environment)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Sin salir de <code>ddev ssh </code> debemos crear el archivo de ambiente al que llamamos <code> .env </code>. No es necesario escribir el contenido del archivo ya que la mayoria ya se encuentra en el archivo <code>.env.example </code> en un primer lugar debemos insertar el siguiente comando <code> ls -la </code> después con <code>.cp .env.example .env </code> copiamos el contenido. Luego es necesario añadir 2 líneas más de codigo, siendo estas : <code>echo "WWWGROUP=1000" >> .env</code> y luego, <code>echo "WWWUSER=1000" >> .env</code> 
 
-## Security Vulnerabilities
+Sintetizando los comandos que debemos escibir son (en el orden que se mencionan) los siguientes:
+<pre tabindex="0" class="has-inner-focus"><code>> ls -la
+> .cp .env.example .env 
+> echo "WWWGROUP=1000" >> .env
+> echo "WWWUSER=1000"
+</code></pre>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 5-Creación de key
 
-## License
+Aún sin salir de <code> ddev ssh </code> debemos generar una clave para nuestro proyecto, de la siguiente manera:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<pre tabindex="0" class="has-inner-focus"><code>> php artisan key:generate
+</code></pre>
+
+
+## 6-Cierre y reinicio
+
+Ahora debemos salir de <code>ddev ssh </code> y reiniciar <code> ddev </code> con los siguientes comandos (en el orden que se mencionan):
+
+<pre tabindex="0" class="has-inner-focus"><code>> exit
+> ddev restart
+</code></pre>
+## Jugar
+ Una vez que se inicie <code> ddev </code> nos devolvera una dirección web que debemos cargar enn nuestro navegador. Si todo salio correctamente la misma nos llevará a la página ofical de <code> laravel </code>. Para poder jugar solo debemos añadir <code> /jugar/1 </code> y ya podemos **acceder al cuatro en linea**
+
+## 7-Cierre
+
+Ahora bien, para cerrar la sesión,solo basta con escribir el siguiente comando:
+
+<pre tabindex="0" class="has-inner-focus"><code>> ddev poweroff
+</code></pre>
