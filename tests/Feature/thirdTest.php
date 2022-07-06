@@ -13,10 +13,17 @@ class thirdTest extends TestCase
      *
      * @return void
      */
-    public function test_example()
+    public function test_comprueba_empezar_con_rojo()
     {
-        $response = $this->get('/');
+        $jugar = file_get_contents('https://4enlinea.ddev.site/jugar/1');//comprueba si se ingreso un rojo
+        $this->assertTrue(substr_count($jugar,'bg-red-500') == 1);
+    }
 
-        $response->assertStatus(200);
+    public function test_comprueba_siguiente_azul()
+    {
+        $jugar = file_get_contents('https://4enlinea.ddev.site/jugar/1');//comprueba si el siguiente a ingresar es azul
+
+        $this->assertTrue(substr_count($jugar,'bg-sky-500') == 7);
     }
 }
+
