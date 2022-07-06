@@ -15,8 +15,10 @@ class firstTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        $response = $this->get('/jugar/4'); //comprueba conexión correcta
 
         $response->assertStatus(200);
     }
 }
+
+
