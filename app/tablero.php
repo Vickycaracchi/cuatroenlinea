@@ -4,7 +4,7 @@ namespace App;
 
 include 'Ficha.php';
 
-interface interfazTablero{
+interface General_tablero{
 
   
     public function volver_a_cero();//tablero vacio
@@ -15,7 +15,7 @@ interface interfazTablero{
 }
 
 
-class Tablero implements interfazTablero
+class Tablero implements General_tablero
 {
     protected int $horizontal;
     protected int $vertical;
