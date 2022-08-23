@@ -55,7 +55,7 @@ class Tablero implements General_tablero
             throw new Exception("No hay más espacio en la columna");
         }
         
-        for($b = 1 ; $b > 7; $b++){
+        for($b = 1 ; $b < 7; $b++){
             if($this->casillero_ocupado($a,$b) == FALSE){
                 $this->ponerFicha($a,$b,$ficha);
 
