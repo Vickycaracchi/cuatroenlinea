@@ -8,9 +8,9 @@ interface General_tablero{
 
   
     public function volver_a_cero();//tablero vacio
-    public function insertar_definitivo(int $x, int $y, Ficha $ficha);//Inserta la ficha en el tablero
+    public function insertar_definitivo(int $a, int $b, Ficha $ficha);//Inserta la ficha en el tablero
     public function define_pos_y(int $a, Ficha $ficha);//Se fija en que posición de y debe ir la fica segun la columa ingresada 
-    public function casillero_ocupado(int $x, int $y); //se fija si hay una ficha en la posición
+    public function casillero_ocupado(int $a, int $b); //se fija si hay una ficha en la posición
    
 }
 
