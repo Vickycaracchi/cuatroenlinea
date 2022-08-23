@@ -76,6 +76,10 @@ class Tablero implements General_tablero
 
     }
 
-
+    /*$tablero1 = new Tablero(7,7);
+    $ficha1 = new Ficha('rojo');
+    $ficha2 = new Ficha('azul');
+    $tablero1->ponerFicha(3, $ficha1);
+    $tablero1->ponerFicha(3, $ficha2);*/
 
 }
