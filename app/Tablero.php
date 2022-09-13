@@ -76,6 +76,20 @@ class Tablero implements General_tablero
 
     }
 
+    public function casillero(int $a,int $b){
+
+        if($a > 7 || $b > 7){
+            throw new Exception("Ingrese nuevos valores, los ingresados estan fueras de las dimensiones del tablero");
+        }
+
+        if($this->tablero[$a][$b] == "0"){
+            return $this->tablero[$a][$b];
+        }
+        else{
+            return $this->tablero[$a][$b]->guardar_color();
+        }
+    }
+
     /*$tablero1 = new Tablero(7,7);
     $ficha1 = new Ficha('rojo');
     $ficha2 = new Ficha('azul');
